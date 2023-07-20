@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "1032e454-8d5a-41e7-ba1d-4957826b98a8",
+		"name": "playlist_gigih",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16587380"
+	},
+	"item": [
+		{
+			"name": "Get All song",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/playlist?sort=play_count",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"playlist"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "play_count"
+						},
+						{
+							"key": "order",
+							"value": "asc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Song to playlist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\"  : \"Sky Full of Stars\",\r\n    \"artist\" :[\"Coldplay\" ],\r\n    \"url\" : \"google.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/playlist",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"playlist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Play a Song",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"playing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/playlist/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"playlist",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
