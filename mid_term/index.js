@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const videoRoute = require("./routes/VideoRoute");
+const commentRoute = require("./routes/CommentRoute");
 
 const mongoString = process.env.DATABASE_URL;
 
@@ -22,6 +23,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use("/api/video", videoRoute);
+app.use("/api/comment", commentRoute);
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
