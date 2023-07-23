@@ -4,7 +4,7 @@ const commentController = require("../controllers/CommentController");
 const handleValidationErrors = require("../middleware/handleValidationError");
 const commentValidation = require("../validation/CommentValidation");
 
-router.get("/", commentController.getComment);
+router.get("/:id", commentController.getComment);
 router.post(
   "/",
   commentValidation.validate("addNewComment"),
