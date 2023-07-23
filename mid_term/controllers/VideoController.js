@@ -8,7 +8,7 @@ const getVideo = async (req, res) => {
       data: videos,
     });
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ error: e.message });
   }
 };
 
@@ -20,7 +20,7 @@ const getVideoById = async (req, res) => {
       data: video,
     });
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ error: e.message });
   }
 };
 
@@ -32,31 +32,39 @@ const createVideo = async (req, res) => {
       data: newVideo,
     });
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ error: e.message });
   }
 };
 
 const updateVideo = async (req, res) => {
   try {
+    const videoExists = await videoService.getVideoById(req);
+    if (!videoExists) {
+      return res.status(404).json({ error: "data not found" });
+    }
     const updateVideo = await videoService.updateVideo(req);
     res.status(200).send({
       message: "data has been successfully updated ",
       data: updateVideo,
     });
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ error: e.message });
   }
 };
 
 const deleteVideo = async (req, res) => {
   try {
+    const videoExists = await videoService.getVideoById(req);
+    if (!videoExists) {
+      return res.status(404).json({ error: "data not found" });
+    }
     const deleteVideo = await videoService.deleteVideo(req);
     res.status(200).send({
       message: "data has been successfully deleted ",
       data: deleteVideo,
     });
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ error: e.message });
   }
 };
 

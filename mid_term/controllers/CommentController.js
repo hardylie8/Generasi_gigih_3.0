@@ -2,13 +2,13 @@ const commentService = require("../services/CommentService");
 
 const getComment = async (req, res) => {
   try {
-    const comments = await commentService.getComments();
+    const comments = await commentService.getComments(req);
     res.status(200).send({
       message: "data has been successfully retrieved ",
       data: comments,
     });
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ error: e.message });
   }
 };
 
@@ -20,7 +20,7 @@ const createComment = async (req, res) => {
       data: newComment,
     });
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ error: e.message });
   }
 };
 
