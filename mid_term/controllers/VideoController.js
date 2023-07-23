@@ -27,7 +27,7 @@ const getVideoById = async (req, res) => {
 const createVideo = async (req, res) => {
   try {
     const newVideo = await videoService.createVideo(req);
-    res.status(200).send({
+    res.status(201).send({
       message: "data has been successfully created ",
       data: newVideo,
     });

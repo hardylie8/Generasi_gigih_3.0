@@ -1,23 +1,23 @@
-const commentService = require("../services/CommentService");
+const productService = require("../services/ProductService");
 
-const getComment = async (req, res) => {
+const getProduct = async (req, res) => {
   try {
-    const comments = await commentService.getComments();
+    const products = await productService.getProducts(req);
     res.status(200).send({
       message: "data has been successfully retrieved ",
-      data: comments,
+      data: products,
     });
   } catch (e) {
     res.status(500).send({ message: e.message });
   }
 };
 
-const createComment = async (req, res) => {
+const createProduct = async (req, res) => {
   try {
-    const newComment = await commentService.createComment(req);
+    const newProduct = await productService.createProduct(req);
     res.status(201).send({
       message: "data has been successfully created ",
-      data: newComment,
+      data: newProduct,
     });
   } catch (e) {
     res.status(500).send({ message: e.message });
@@ -25,6 +25,6 @@ const createComment = async (req, res) => {
 };
 
 module.exports = {
-  getComment,
-  createComment,
+  getProduct,
+  createProduct,
 };
