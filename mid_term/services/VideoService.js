@@ -1,40 +1,40 @@
-const Video = require("../models/Video");
+const videoRepository = require("../repositories/VideoRepository");
 
-const createVideo = (req) => {
-  const newVideo = new Video({
-    title: req.body.title,
-    thumbnailUrl: req.body.thumbnailUrl,
-    embeddedComponent: req.body.embeddedComponent,
-  });
-  return newVideo.save();
+const createVideo = (title, thumbnailUrl, embeddedComponent) => {
+  return videoRepository.createVideo(title, thumbnailUrl, embeddedComponent);
 };
 
 const getVideos = (page, limit) => {
-  return Video.paginate(
-    {},
-    {
-      lean: true,
-      page: page,
-      limit: limit,
-    }
-  );
+  return videoRepository.getVideos(page, limit);
 };
 
-const updateVideo = (req) => {
-  const updatedVideo = Video.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
-  return updatedVideo;
+const updateVideo = async (id, title, thumbnailUrl, embeddedComponent) => {
+  const videoExists = await videoService.getVideoById(id);
+  if (!videoExists) {
+    throw new Error("Data not found");
+  }
+  const updateVideo = {};
+  title && Object.assign(updateVideo, { title: tile });
+  thumbnailUrl && Object.assign(updateVideo, { thumbnailUrl: thumbnailUrl });
+  embeddedComponent &&
+    Object.assign(updateVideo, { embeddedComponent: embeddedComponent });
+  return videoRepository.updateVideo(id, updateVideo);
 };
 
-const getVideoById = (req) => {
-  const id = req.params.id;
-  return Video.findById(id).lean();
+const getVideoById = async (id) => {
+  const videoExists = await videoService.getVideoById(id);
+  if (!videoExists) {
+    throw new Error("Data not found");
+  }
+  return videoRepository.getVideoById(id);
 };
 
-const deleteVideo = (req) => {
-  const id = req.params.id;
-  return Video.findByIdAndDelete(id);
+const deleteVideo = async (id) => {
+  const videoExists = await videoService.getVideoById(id);
+  if (!videoExists) {
+    throw new Error("Data not found");
+  }
+  return videoRepository.deleteVideo(id);
 };
 
 module.exports = {

@@ -1,25 +1,11 @@
-const Product = require("../models/Product");
-
-const createProduct = (req) => {
-  const newProduct = new Product({
-    title: req.body.title,
-    price: req.body.price,
-    url: req.body.url,
-    videoId: req.body.videoId,
-  });
-  return newProduct.save();
-};
+const productRepository = require("../repositories/ProductRepository");
 
 const getProducts = (page, limit, videoId) => {
-  return Product.paginate(
-    { videoId: videoId },
-    {
-      populate: "videoId",
-      lean: true,
-      page: page,
-      limit: limit,
-    }
-  );
+  return productRepository.getProducts(page, limit, videoId);
+};
+
+const createProduct = (title, price, url, videoId) => {
+  return productRepository.createProduct(title, price, url, videoId);
 };
 
 module.exports = {

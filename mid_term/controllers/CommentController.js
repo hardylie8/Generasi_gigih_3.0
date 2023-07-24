@@ -17,7 +17,12 @@ const getComment = async (req, res) => {
 
 const createComment = async (req, res) => {
   try {
-    const newComment = await commentService.createComment(req);
+    const { username, videoId, message } = req.body;
+    const newComment = await commentService.createComment(
+      username,
+      videoId,
+      message
+    );
     res.status(201).send({
       message: "data has been successfully created ",
       data: newComment,

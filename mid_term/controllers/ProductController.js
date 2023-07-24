@@ -17,7 +17,13 @@ const getProduct = async (req, res) => {
 
 const createProduct = async (req, res) => {
   try {
-    const newProduct = await productService.createProduct(req);
+    const { title, price, url, videoId } = req.body;
+    const newProduct = await productService.createProduct(
+      title,
+      price,
+      url,
+      videoId
+    );
     res.status(201).send({
       message: "data has been successfully created ",
       data: newProduct,
