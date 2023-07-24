@@ -9,8 +9,17 @@ const createComment = (req) => {
   return newComment.save();
 };
 
-const getComments = () => {
-  return Comment.find().populate("videoId");
+const getComments = (page, limit, videoId) => {
+  return Comment.paginate(
+    { videoId: videoId },
+    {
+      sort: "-createdAt",
+      populate: "videoId",
+      lean: true,
+      page: page,
+      limit: limit,
+    }
+  );
 };
 
 module.exports = {

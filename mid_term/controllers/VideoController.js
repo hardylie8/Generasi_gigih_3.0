@@ -2,7 +2,9 @@ const videoService = require("../services/VideoService");
 
 const getVideo = async (req, res) => {
   try {
-    const videos = await videoService.getVideos();
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 10;
+    const videos = await videoService.getVideos(page, limit);
     res.status(200).send({
       message: "data has been successfully retrieved ",
       data: videos,

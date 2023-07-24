@@ -9,8 +9,15 @@ const createVideo = (req) => {
   return newVideo.save();
 };
 
-const getVideos = () => {
-  return Video.find().lean();
+const getVideos = (page, limit) => {
+  return Video.paginate(
+    {},
+    {
+      lean: true,
+      page: page,
+      limit: limit,
+    }
+  );
 };
 
 const updateVideo = (req) => {
