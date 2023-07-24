@@ -10,9 +10,16 @@ const createProduct = (req) => {
   return newProduct.save();
 };
 
-const getProducts = (req) => {
-  const videoId = req.params.videoId;
-  return Product.find({ videoId: videoId }).populate("videoId");
+const getProducts = (page, limit, videoId) => {
+  return Product.paginate(
+    { videoId: videoId },
+    {
+      populate: "videoId",
+      lean: true,
+      page: page,
+      limit: limit,
+    }
+  );
 };
 
 module.exports = {

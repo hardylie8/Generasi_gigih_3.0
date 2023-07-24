@@ -3,8 +3,15 @@ const router = express.Router();
 const productController = require("../controllers/ProductController");
 const handleValidationErrors = require("../middleware/handleValidationError");
 const productValidation = require("../validation/ProductValidation");
+const paginationValidation = require("../validation/PaginationValidation");
 
-router.get("/:videoId", productController.getProduct);
+router.get(
+  "/",
+  paginationValidation,
+  handleValidationErrors,
+  productController.getProduct
+);
+
 router.post(
   "/",
   productValidation.validate("addNewProduct"),

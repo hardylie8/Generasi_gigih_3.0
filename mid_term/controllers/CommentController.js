@@ -2,7 +2,10 @@ const commentService = require("../services/CommentService");
 
 const getComment = async (req, res) => {
   try {
-    const comments = await commentService.getComments(req);
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 10;
+    const videoId = req.query.videoId;
+    const comments = await commentService.getComments(page, limit, videoId);
     res.status(200).send({
       message: "data has been successfully retrieved ",
       data: comments,
