@@ -16,7 +16,8 @@ const getVideo = async (req, res) => {
 
 const getVideoById = async (req, res) => {
   try {
-    const video = await videoService.getVideoById(req);
+    const id = req.params.id;
+    const video = await videoService.getVideoById(id);
     res.status(200).send({
       message: "data has been successfully retrieved ",
       data: video,
@@ -28,7 +29,12 @@ const getVideoById = async (req, res) => {
 
 const createVideo = async (req, res) => {
   try {
-    const newVideo = await videoService.createVideo(req);
+    const { title, thumbnailUrl, embeddedComponent } = req.body;
+    const newVideo = await videoService.createVideo(
+      title,
+      thumbnailUrl,
+      embeddedComponent
+    );
     res.status(201).send({
       message: "data has been successfully created ",
       data: newVideo,
@@ -40,11 +46,14 @@ const createVideo = async (req, res) => {
 
 const updateVideo = async (req, res) => {
   try {
-    const videoExists = await videoService.getVideoById(req);
-    if (!videoExists) {
-      return res.status(404).json({ error: "data not found" });
-    }
-    const updateVideo = await videoService.updateVideo(req);
+    const { title, thumbnailUrl, embeddedComponent } = req.body;
+    const id = req.params.id;
+    const updateVideo = await videoService.updateVideo(
+      id,
+      title,
+      thumbnailUrl,
+      embeddedComponent
+    );
     res.status(200).send({
       message: "data has been successfully updated ",
       data: updateVideo,
@@ -56,11 +65,8 @@ const updateVideo = async (req, res) => {
 
 const deleteVideo = async (req, res) => {
   try {
-    const videoExists = await videoService.getVideoById(req);
-    if (!videoExists) {
-      return res.status(404).json({ error: "data not found" });
-    }
-    const deleteVideo = await videoService.deleteVideo(req);
+    const id = req.params.id;
+    const deleteVideo = await videoService.deleteVideo(id);
     res.status(200).send({
       message: "data has been successfully deleted ",
       data: deleteVideo,

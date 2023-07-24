@@ -1,25 +1,11 @@
-const Comment = require("../models/Comment");
+const commentRepository = require("../repositories/CommentRepository");
 
-const createComment = (req) => {
-  const newComment = new Comment({
-    username: req.body.username,
-    videoId: req.body.videoId,
-    message: req.body.message,
-  });
-  return newComment.save();
+const createComment = (username, videoId, message) => {
+  return commentRepository.createComment(username, videoId, message);
 };
 
 const getComments = (page, limit, videoId) => {
-  return Comment.paginate(
-    { videoId: videoId },
-    {
-      sort: "-createdAt",
-      populate: "videoId",
-      lean: true,
-      page: page,
-      limit: limit,
-    }
-  );
+  return commentRepository.getComments(page, limit, videoId);
 };
 
 module.exports = {
