@@ -17,9 +17,9 @@ const getComment = async (req, res) => {
 
 const createComment = async (req, res) => {
   try {
-    const { username, videoId, message } = req.body;
+    const { videoId, message } = req.body;
     const newComment = await commentService.createComment(
-      username,
+      req.user?.id,
       videoId,
       message
     );

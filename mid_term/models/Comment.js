@@ -3,14 +3,14 @@ const mongoosePaginate = require("mongoose-paginate-v2");
 
 const CommentSchema = new mongoose.Schema(
   {
-    // userId: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'AnotherModel',
-    //   },
-    username: {
-      type: String,
-      required: [true, "must provide username"],
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
+    // username: {
+    //   type: String,
+    //   required: [true, "must provide username"],
+    // },
     videoId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Video",

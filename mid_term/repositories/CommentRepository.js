@@ -5,7 +5,7 @@ const getComments = (page, limit, videoId) => {
     { videoId: videoId },
     {
       sort: "-createdAt",
-      populate: "videoId",
+      populate: ["videoId", "userId"],
       lean: true,
       page: page,
       limit: limit,
@@ -13,9 +13,9 @@ const getComments = (page, limit, videoId) => {
   );
 };
 
-const createComment = (username, videoId, message) => {
+const createComment = (userId, videoId, message) => {
   const newComment = new Comment({
-    username: username,
+    userId: userId,
     videoId: videoId,
     message: message,
   });

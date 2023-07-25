@@ -9,7 +9,7 @@ const getVideos = (page, limit) => {
 };
 
 const updateVideo = async (id, title, thumbnailUrl, embeddedComponent) => {
-  const videoExists = await videoService.getVideoById(id);
+  const videoExists = await videoRepository.getVideoById(id);
   if (!videoExists) {
     throw new Error("Data not found");
   }
@@ -22,7 +22,7 @@ const updateVideo = async (id, title, thumbnailUrl, embeddedComponent) => {
 };
 
 const getVideoById = async (id) => {
-  const videoExists = await videoService.getVideoById(id);
+  const videoExists = await videoRepository.getVideoById(id);
   if (!videoExists) {
     throw new Error("Data not found");
   }

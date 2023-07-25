@@ -21,10 +21,10 @@ const getVideos = (page, limit) => {
 };
 
 const updateVideo = (id, updatedVideo) => {
-  const updatedVideo = Video.findByIdAndUpdate(id, updatedVideo, {
+  const video = Video.findByIdAndUpdate(id, updatedVideo, {
     new: true,
   });
-  return updatedVideo;
+  return video;
 };
 
 const getVideoById = (id) => {
