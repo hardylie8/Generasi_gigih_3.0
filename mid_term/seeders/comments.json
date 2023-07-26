@@ -1,0 +1,22 @@
+{
+  "comment_1": {
+    "userId": "User1",
+    "videoId": "Ngeliat laptop dengan logo ini? Yang punya pasti orang kaya.",
+    "message": "Apakah ada diskon atau penawaran khusus untuk pembelian beberapa produk?"
+  },
+  "comment_2": {
+    "userId": "User2",
+    "videoId": "Ngeliat laptop dengan logo ini? Yang punya pasti orang kaya.",
+    "message": "Bisa ditampilkan dengan lebih dekat agar bisa melihat detail produknya?"
+  },
+  "comment_3": {
+    "userId": "User",
+    "videoId": "Ngeliat laptop dengan logo ini? Yang punya pasti orang kaya.",
+    "message": "Dikirim dari mana ??"
+  },
+  "comment_4": {
+    "userId": "User",
+    "videoId": "Ngeliat laptop dengan logo ini? Yang punya pasti orang kaya.",
+    "message": "Kapan mulai dikirim??"
+  }
+}

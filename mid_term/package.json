@@ -20,6 +20,7 @@
     "mongoose-paginate-v2": "^1.7.23"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "seedgoose": "github:hardylie8/seedgoose"
   }
 }
