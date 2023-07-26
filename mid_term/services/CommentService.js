@@ -1,7 +1,12 @@
 const commentRepository = require("../repositories/CommentRepository");
+const videoRepository = require("../repositories/VideoRepository");
 
-const createComment = (username, videoId, message) => {
-  return commentRepository.createComment(username, videoId, message);
+const createComment = async (userId, videoId, message) => {
+  const videoExists = await videoRepository.getVideoById(videoId);
+  if (!videoExists) {
+    throw new Error("Data not found");
+  }
+  return commentRepository.createComment(userId, videoId, message);
 };
 
 const getComments = (page, limit, videoId) => {
