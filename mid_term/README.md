@@ -25,7 +25,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd Generasi_gigih_3.0/mid_term
 ```
 
 Install dependencies
