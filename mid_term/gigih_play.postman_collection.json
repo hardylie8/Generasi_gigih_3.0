@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "de3473bc-c47f-42b5-83ba-faa8731f3f01",
+		"name": "gigih_play",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16587380"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Admin1\",\r\n    \"email\" : \"admin1@gmail.com\",\r\n    \"password\" : \"Admin123*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin1@gmail.com\",\r\n    \"password\" : \"Admin123*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "getComment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/comment?videoId=64c1f03dc1b5869d753b0e7b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment"
+							],
+							"query": [
+								{
+									"key": "videoId",
+									"value": "64c1f03dc1b5869d753b0e7b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzFlZmY5YzFiNTg2OWQ3NTNiMGU3NCIsImVtYWlsIjoiYWRtaW4xQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiQWRtaW4xIiwiaWF0IjoxNjkwNDMxNTE2LCJleHAiOjE2OTA0MzUxMTZ9.oqKYwvG2Q2xBXCcaqjBznpll6K3pgpoUCGl_a8xUPjE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"hello\",\r\n    \"message\" : \"test\",\r\n    \"videoId\" : \"64c1f03dc1b5869d753b0e7b\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/comment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Post Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MDI4NDM3NSwiZXhwIjoxNjkwMjg3OTc1fQ.r94nUkS2NjNj5ZCO4Ia6XMyA1iThlQyjd-rQ0CiZnwM",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Laptop Razer\",\r\n    \"price\" : 2000000,\r\n    \"url\" :  \"https://www.blackxperience.com/assets/content/blackattitude/blacktech/razer-blade-15-base-pilihan-tepat-untuk-gamer-razer.png\",\r\n    \"videoId\" : \"64c1f03dc1b5869d753b0e7b\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/product?videoId=64c1f03dc1b5869d753b0e7b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							],
+							"query": [
+								{
+									"key": "videoId",
+									"value": "64c1f03dc1b5869d753b0e7b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Video",
+			"item": [
+				{
+					"name": "getVideo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/video",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"video"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Video",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Ngeliat laptop dengan logo ini? Yang punya pasti orang kaya.\",\r\n    \"thumbnailUrl\" : \"https://www.blackxperience.com/assets/content/blackattitude/blacktech/razer-blade-15-base-pilihan-tepat-untuk-gamer-razer.png\",\r\n    \"embeddedComponent\" : \"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https://www.youtube.com/embed/hLXIik8dmdg\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen></iframe>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/video",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"video"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
