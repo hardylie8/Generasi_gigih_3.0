@@ -34,6 +34,12 @@ Install dependencies
   npm install
 ```
 
+Copy/rename .env.example to .env fill the value
+
+```bash
+  npm install
+```
+
 Start the server
 
 ```bash
@@ -68,6 +74,8 @@ Overview
 - The controller formats the response in JSON or another appropriate format and sends it back to the user.
 
 ## Api Reference
+
+Below are the list of api endpoint. If you want to use postman i already include a postman collection in this project (named gigih_play).
 
 #Users
 
