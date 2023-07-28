@@ -34,11 +34,8 @@ Install dependencies
   npm install
 ```
 
-Copy/rename .env.example to .env fill the value
+Copy/rename .env.example to .env and then fill the value
 
-```bash
-  npm install
-```
 
 Start the server
 
